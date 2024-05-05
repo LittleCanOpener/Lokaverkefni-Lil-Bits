@@ -1,19 +1,15 @@
+import LogoSVG from '@/app/images/logo/logo';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
 const Navbar = () => {
-  const logo = ("../../app/images/logo/lil-bits.svg");
   return (
     <nav className="nav">
-      <Link 
-        to="/" 
+      <Link
+        to="/"
         className="site-title"
       >
-        <svg>
-          <img src={logo} alt="Image" />
-        </svg>
-        
+        <LogoSVG />
       </Link>
       <ul>
         <li><Link to="/home">Home</Link></li>
