@@ -1,11 +1,12 @@
 'use client'
 import React from 'react';
 import Navbar from "@/components/navbar/navbar";
-import { BrowserRouter as 
-  Router,
-   Route,
-    Routes 
-  } from 'react-router-dom';
+import {
+  BrowserRouter as
+    Router,
+  Route,
+  Routes
+} from 'react-router-dom';
 import DrinksScreen from "./navigation/drinkScreen";
 import FoodScreen from "./navigation/foodScreen";
 import HomeScreen from './navigation/homeScreen';
