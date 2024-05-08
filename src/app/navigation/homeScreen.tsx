@@ -1,30 +1,17 @@
-import { useMultistepForm } from "@/components/navbar/multistep"
-import FoodScreen from "./foodScreen"
-import DrinksScreen from "./drinkScreen"
-import DateScreen from "./dateScreen"
+import Carousel from '@/components/carousel/carousel';
+import SlideOne from '@/components/carousel/slideOne';
+import SlideThree from '@/components/carousel/slideThree';
+import SlideTwo from '@/components/carousel/slideTwo';
+import React from 'react';
+
 export default function HomeScreen() {
-    const { steps, step, currentStepIndex, isFirstStep, back, next, isLastStep } = useMultistepForm([<FoodScreen />, <DrinksScreen />, <DateScreen />])
-    return <>
-        <div>
-            <form>
-                <div>  
-                    {currentStepIndex + 1} / {steps.length}
-                </div>
-                {step}
-                <div>
-                    {!isFirstStep && 
-                    <button 
-                    type="button" 
-                    onClick={back}>
-                        Back
-                    </button>}
-                    <button 
-                    type="button" 
-                    onClick={next}>
-                        {isLastStep ? "Finish" : "Next"}
-                    </button>
-                </div>
-            </form>
+    return (
+        <div className='flex flex-col items-center border-solid border-2 border-black'>
+            <Carousel>
+                <SlideOne />
+                <SlideTwo />
+                <SlideThree />
+            </Carousel>
         </div>
-    </>
+    )
 }

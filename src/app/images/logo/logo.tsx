@@ -4,7 +4,7 @@ const LogoSVG = () => {
     return (
         <div>
             <svg
-                style={{ width: "45%", height: "auto" }}
+                style={{ width: "100%", height: "100%" }}
                 viewBox="-1.5 0 1143.3 439.7"
                 xmlns="http://www.w3.org/2000/svg"
 

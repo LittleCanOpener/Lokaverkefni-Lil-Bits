@@ -7,6 +7,7 @@ import {
   Route,
   Routes
 } from 'react-router-dom';
+import 'tailwindcss/tailwind.css';
 import DrinksScreen from "./navigation/drinkScreen";
 import FoodScreen from "./navigation/foodScreen";
 import HomeScreen from './navigation/homeScreen';
