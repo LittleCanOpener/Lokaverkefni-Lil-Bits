@@ -1,3 +1,9 @@
+import Drinks from "@/components/drinkFetch";
+
 export default function DrinksScreen() {
-    return <h1>Drinks</h1>
+    return (
+        <div>
+            <Drinks />
+        </div>
+    );
 }

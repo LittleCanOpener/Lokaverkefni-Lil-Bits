@@ -1,3 +1,9 @@
+import Foods from "@/components/foodFetch";
+
 export default function FoodScreen() {
-    return <h1>Food</h1>
+    return (
+        <div>
+            <Foods />
+        </div>
+    );
 }

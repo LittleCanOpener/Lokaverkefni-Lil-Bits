@@ -6,12 +6,14 @@ import React from 'react';
 
 export default function HomeScreen() {
     return (
-        <div className='flex flex-col items-center'>
-            <Carousel>
-                <SlideOne />
-                <SlideTwo />
-                <SlideThree />
-            </Carousel>
-        </div>
+        <>
+            <div className='flex flex-col items-center'>
+                <Carousel>
+                    <SlideOne />
+                    <SlideTwo />
+                    <SlideThree />
+                </Carousel>
+            </div>
+        </>
     )
 }
