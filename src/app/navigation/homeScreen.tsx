@@ -6,7 +6,7 @@ import React from 'react';
 
 export default function HomeScreen() {
     return (
-        <div className='flex flex-col items-center border-solid border-2 border-black'>
+        <div className='flex flex-col items-center'>
             <Carousel>
                 <SlideOne />
                 <SlideTwo />

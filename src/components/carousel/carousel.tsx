@@ -25,7 +25,7 @@ const Carousel: React.FC<IProps> = ({ children }) => {
     };
 
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center border-solid border-2 border-black">
             <div className="overflow-hidden relative" style={{ width: "100%", height: "300px" }}>
                 <div className="flex transition-transform ease-in-out duration-300" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
                     {children.map((slide, index) => (

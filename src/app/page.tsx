@@ -12,6 +12,7 @@ import DrinksScreen from "./navigation/drinkScreen";
 import FoodScreen from "./navigation/foodScreen";
 import HomeScreen from './navigation/homeScreen';
 import DateScreen from './navigation/dateScreen';
+import Footer from '@/components/footer/footer';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/drink" element={<DrinksScreen />} />
           <Route path="/date" element={<DateScreen />} />
         </Routes>
+        <Footer />
       </Router>
     </>
   );
