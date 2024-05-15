@@ -3,7 +3,7 @@ import TimePicker from "@/components/dateFetch";
 
 export default function DateScreen() {
     return (
-        <div>
+        <div className='flex flex-col items-center'>
             <TimePicker />
         </div>
     );

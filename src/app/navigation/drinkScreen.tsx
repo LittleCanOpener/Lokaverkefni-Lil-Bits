@@ -1,9 +1,9 @@
-import Drinks from "@/components/drinkFetch";
+import DrinkOrderApp from "@/components/drinkFetch";
 
 export default function DrinksScreen() {
     return (
         <div>
-            <Drinks />
+            <DrinkOrderApp />
         </div>
     );
 }

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import Food from './food';
+import Order from './order';
 
-const Foods: React.FC = () => {
+
+const FoodOrderApp: React.FC = () => {
     const [foods, setFoods] = useState<any[]>([]);
-
-    useEffect(() => {
-        fetchFoods();
-    }, []);
+    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
     const fetchFoods = async () => {
         try {
@@ -17,33 +17,40 @@ const Foods: React.FC = () => {
         }
     };
 
-    return (
-        <div className="container mx-auto py-8">
-            <h1 className="text-4xl font-bold text-center mb-8">Food Categories</h1>
+    const toggleCategorySelection = (category: string) => {
+        const isSelected = selectedCategories.includes(category);
+        if (isSelected) {
+            setSelectedCategories(selectedCategories.filter(item => item !== category));
+        } else {
+            setSelectedCategories([...selectedCategories, category]);
+        }
+    };
 
-            <section className="mb-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">
-                {foods.map((category: any) => (
-                    <div key={category.idCategory} className="mb-8">
-                        <h2 className="text-2xl font-bold mb-4">{category.strCategory}</h2>
-                        <div className="grid grid-cols-1">
-                            {category.strCategoryThumb && (
-                                <div className="relative rounded overflow-hidden">
-                                    <img
-                                        src={category.strCategoryThumb}
-                                        alt={category.strCategory}
-                                        className="w-full h-full object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                                        <p className="text-white text-lg">{category.strCategory}</p>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                ))}
-            </section>
+    const removeFromSelected = (category: string) => {
+        setSelectedCategories(selectedCategories.filter(item => item !== category));
+    };
+
+    const sendToAnotherFile = () => {
+        // Implement sending selected categories to another file
+        console.log("Selected categories:", selectedCategories);
+    };
+
+    return (
+        <div className="container mx-auto py-8 flex">
+            <Food
+                foods={foods}
+                fetchFoods={fetchFoods}
+                selectedCategories={selectedCategories}
+                toggleCategorySelection={toggleCategorySelection}
+                removeFromSelected={removeFromSelected}
+                sendToAnotherFile={sendToAnotherFile}
+            />
+            <Order
+                selectedCategories={selectedCategories}
+                removeFromSelected={removeFromSelected}
+            />
         </div>
     );
 };
 
-export default Foods;
+export default FoodOrderApp;

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import Drinks from './drink';
+import Order from './order';
 
-const Drinks: React.FC = () => {
+
+const DrinkOrderApp: React.FC = () => {
     const [drinks, setDrinks] = useState<any[]>([]);
-
-    useEffect(() => {
-        fetchDrinks();
-    }, []);
+    const [selectedDrinks, setSelectedDrinks] = useState<string[]>([]);
 
     const fetchDrinks = async () => {
         try {
@@ -17,29 +17,40 @@ const Drinks: React.FC = () => {
         }
     };
 
-    return (
-        <div className="container mx-auto py-8">
-            <h1 className="text-4xl font-bold text-center mb-8">Cocktails</h1>
+    const toggleDrinkSelection = (drink: string) => {
+        const isSelected = selectedDrinks.includes(drink);
+        if (isSelected) {
+            setSelectedDrinks(selectedDrinks.filter(item => item !== drink));
+        } else {
+            setSelectedDrinks([...selectedDrinks, drink]);
+        }
+    };
 
-            <section className="mb-12">
-                <h2 className="text-2xl font-bold mb-4">Alcoholic Drinks</h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    {drinks.map((drink: any) => (
-                        <div key={drink.idDrink} className="relative rounded overflow-hidden">
-                            <img
-                                src={drink.strDrinkThumb}
-                                alt={drink.strDrink}
-                                className="w-full h-full object-cover"
-                            />
-                            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                                <p className="text-white text-lg">{drink.strDrink}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
+    const removeFromSelected = (drink: string) => {
+        setSelectedDrinks(selectedDrinks.filter(item => item !== drink));
+    };
+
+    const sendToAnotherFile = () => {
+        // Implement sending selected drinks to another file
+        console.log("Selected drinks:", selectedDrinks);
+    };
+
+    return (
+        <div className="container mx-auto py-8 flex">
+            <Drinks
+                drinks={drinks}
+                fetchDrinks={fetchDrinks}
+                selectedDrinks={selectedDrinks}
+                toggleDrinkSelection={toggleDrinkSelection}
+                removeFromSelected={removeFromSelected}
+                sendToAnotherFile={sendToAnotherFile}
+            />
+            <Order
+                selectedCategories={selectedDrinks}
+                removeFromSelected={removeFromSelected}
+            />
         </div>
     );
 };
 
-export default Drinks;
+export default DrinkOrderApp;
