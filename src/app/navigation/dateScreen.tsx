@@ -1,3 +1,10 @@
+import TimePicker from "@/components/dateFetch";
+
+
 export default function DateScreen() {
-    return <h1>Date</h1>
+    return (
+        <div>
+            <TimePicker />
+        </div>
+    );
 }
