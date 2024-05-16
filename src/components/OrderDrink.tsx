@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Drinks from './drink';
-import Order from './order';
-
+import Order from './Order';
 
 const DrinkOrderApp: React.FC = () => {
     const [drinks, setDrinks] = useState<any[]>([]);
     const [selectedDrinks, setSelectedDrinks] = useState<string[]>([]);
+
+    useEffect(() => {
+        fetchDrinks();
+    }, []);
 
     const fetchDrinks = async () => {
         try {
@@ -18,37 +21,29 @@ const DrinkOrderApp: React.FC = () => {
     };
 
     const toggleDrinkSelection = (drink: string) => {
-        const isSelected = selectedDrinks.includes(drink);
-        if (isSelected) {
-            setSelectedDrinks(selectedDrinks.filter(item => item !== drink));
-        } else {
-            setSelectedDrinks([...selectedDrinks, drink]);
-        }
+        setSelectedDrinks(prevDrinks =>
+            prevDrinks.includes(drink)
+                ? prevDrinks.filter(item => item !== drink)
+                : [...prevDrinks, drink]
+        );
     };
 
     const removeFromSelected = (drink: string) => {
-        setSelectedDrinks(selectedDrinks.filter(item => item !== drink));
-    };
-
-    const sendToAnotherFile = () => {
-        // Implement sending selected drinks to another file
-        console.log("Selected drinks:", selectedDrinks);
+        setSelectedDrinks(prevDrinks =>
+            prevDrinks.filter(item => item !== drink)
+        );
     };
 
     return (
         <div className="container mx-auto py-8 flex">
             <Drinks
                 drinks={drinks}
-                fetchDrinks={fetchDrinks}
                 selectedDrinks={selectedDrinks}
                 toggleDrinkSelection={toggleDrinkSelection}
-                removeFromSelected={removeFromSelected}
-                sendToAnotherFile={sendToAnotherFile}
-            />
-            <Order
-                selectedCategories={selectedDrinks}
+                fetchDrinks={fetchDrinks}
                 removeFromSelected={removeFromSelected}
             />
+            <Order items={selectedDrinks} removeFromSelected={removeFromSelected} />
         </div>
     );
 };

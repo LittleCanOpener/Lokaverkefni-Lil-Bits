@@ -2,17 +2,15 @@ import React, { useEffect } from 'react';
 
 interface FoodProps {
     foods: any[];
-    fetchFoods: () => void;
     selectedCategories: string[];
     toggleCategorySelection: (category: string) => void;
     removeFromSelected: (category: string) => void;
-    sendToAnotherFile: () => void;
 }
 
-const Food: React.FC<FoodProps> = ({ foods, fetchFoods, selectedCategories, toggleCategorySelection, removeFromSelected, sendToAnotherFile }) => {
+const Food: React.FC<FoodProps> = ({ foods, selectedCategories, toggleCategorySelection, removeFromSelected }) => {
     useEffect(() => {
-        fetchFoods();
-    }, [fetchFoods]);
+
+    }, []);
 
     return (
         <div className="w-3/4">
@@ -42,7 +40,6 @@ const Food: React.FC<FoodProps> = ({ foods, fetchFoods, selectedCategories, togg
                     </div>
                 ))}
             </section>
-            <button type='submit' className="fixed bottom-0 right-0 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={sendToAnotherFile}>Continue</button>
         </div>
     );
 };

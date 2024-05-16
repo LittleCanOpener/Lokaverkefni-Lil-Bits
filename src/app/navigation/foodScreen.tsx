@@ -1,4 +1,4 @@
-import Foods from "@/components/foodFetch";
+import Foods from "@/components/OrderFood";
 
 export default function FoodScreen() {
     return (

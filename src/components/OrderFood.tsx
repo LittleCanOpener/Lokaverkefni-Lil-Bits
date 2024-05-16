@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Order from './Order'
 import Food from './food';
-import Order from './order';
-
 
 const FoodOrderApp: React.FC = () => {
     const [foods, setFoods] = useState<any[]>([]);
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+    useEffect(() => {
+        fetchFoods();
+    }, []);
 
     const fetchFoods = async () => {
         try {
@@ -18,37 +21,28 @@ const FoodOrderApp: React.FC = () => {
     };
 
     const toggleCategorySelection = (category: string) => {
-        const isSelected = selectedCategories.includes(category);
-        if (isSelected) {
-            setSelectedCategories(selectedCategories.filter(item => item !== category));
-        } else {
-            setSelectedCategories([...selectedCategories, category]);
-        }
+        setSelectedCategories(prevCategories =>
+            prevCategories.includes(category)
+                ? prevCategories.filter(item => item !== category)
+                : [...prevCategories, category]
+        );
     };
 
     const removeFromSelected = (category: string) => {
-        setSelectedCategories(selectedCategories.filter(item => item !== category));
-    };
-
-    const sendToAnotherFile = () => {
-        // Implement sending selected categories to another file
-        console.log("Selected categories:", selectedCategories);
+        setSelectedCategories(prevCategories =>
+            prevCategories.filter(item => item !== category)
+        );
     };
 
     return (
         <div className="container mx-auto py-8 flex">
             <Food
                 foods={foods}
-                fetchFoods={fetchFoods}
                 selectedCategories={selectedCategories}
                 toggleCategorySelection={toggleCategorySelection}
                 removeFromSelected={removeFromSelected}
-                sendToAnotherFile={sendToAnotherFile}
             />
-            <Order
-                selectedCategories={selectedCategories}
-                removeFromSelected={removeFromSelected}
-            />
+            <Order items={selectedCategories} removeFromSelected={removeFromSelected} />
         </div>
     );
 };
