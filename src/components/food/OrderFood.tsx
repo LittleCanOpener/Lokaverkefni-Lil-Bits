@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Order from './Order'
+import Order from '../Order';
 import Food from './food';
 
 const FoodOrderApp: React.FC = () => {

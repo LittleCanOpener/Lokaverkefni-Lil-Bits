@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Drinks from './drink';
-import Order from './Order';
+import Order from '../Order';
 
 const DrinkOrderApp: React.FC = () => {
     const [drinks, setDrinks] = useState<any[]>([]);

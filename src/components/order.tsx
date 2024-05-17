@@ -7,13 +7,18 @@ interface OrderProps {
 
 const Order: React.FC<OrderProps> = ({ items, removeFromSelected }) => {
     return (
-        <div className="order-container">
-            <h2>Selected Items:</h2>
-            <ul>
+        <div className="flex flex-col items-center m-8 p-4">
+            <h2 className="mb-4">Selected Order:</h2>
+            <ul className="list-disc list-inside">
                 {items.map((item, index) => (
-                    <li key={index}>
+                    <li key={index} className="mb-2">
                         {item}
-                        <button onClick={() => removeFromSelected(item)}>Remove</button>
+                        <button
+                            className="ml-2 px-3 py-1 bg-red-500 text-white rounded-md"
+                            onClick={() => removeFromSelected(item)}
+                        >
+                            Remove
+                        </button>
                     </li>
                 ))}
             </ul>

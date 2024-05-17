@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Food from './food';
-import Drinks from './drink';
+import Food from './food/food';
+import Drinks from './drinks/drink';
 import Order from './Order';
 
 const OrderApp: React.FC = () => {

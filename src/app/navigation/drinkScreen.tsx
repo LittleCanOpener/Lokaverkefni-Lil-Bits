@@ -1,4 +1,4 @@
-import DrinkOrderApp from "@/components/OrderDrink";
+import DrinkOrderApp from "@/components/drinks/OrderDrink";
 
 export default function DrinksScreen() {
     return (
