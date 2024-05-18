@@ -42,9 +42,15 @@ const FoodOrderApp: React.FC = () => {
                 toggleCategorySelection={toggleCategorySelection}
                 removeFromSelected={removeFromSelected}
             />
-            <Order items={selectedCategories} removeFromSelected={removeFromSelected} />
+            <Order
+                foodItems={selectedCategories}
+                drinkItems={[]}
+                removeFromSelectedFood={removeFromSelected}
+                removeFromSelectedDrinks={() => { }}
+            />
         </div>
     );
 };
 
 export default FoodOrderApp;
+

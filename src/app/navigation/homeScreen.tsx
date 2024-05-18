@@ -10,23 +10,29 @@ import FindOrder from './FindOrder';
 export default function HomeScreen() {
     return (
         <>
-            <div className='grid grid-cols-2 grid-flow-row justify-items-center'>
-                <div>
-                    <Carousel>
-                        <SlideOne />
-                        <SlideTwo />
-                        <SlideThree />
-                    </Carousel>
+            <div className='flex justify-center'>
+                <div className='grid grid-row-2 grid-flow-row'>
+                    <div >
+                        <Carousel>
+                            <SlideOne />
+                            <SlideTwo />
+                            <SlideThree />
+                        </Carousel>
+                    </div>
+                    <div>
+                        <FindOrder />
+                    </div>
                 </div>
-                <div>
-                    <BookTable />
+                <div className='grid grid-row-2 grid-flow-row'>
+                    <div>
+                        <BookTable />
+                    </div>
+
+                    <div>
+                        <Founder />
+                    </div>
                 </div>
-                <div>
-                    <FindOrder />
-                </div>
-                <div>
-                    <Founder />
-                </div>
+
             </div>
 
         </>

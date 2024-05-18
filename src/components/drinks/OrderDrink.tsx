@@ -43,7 +43,13 @@ const DrinkOrderApp: React.FC = () => {
                 fetchDrinks={fetchDrinks}
                 removeFromSelected={removeFromSelected}
             />
-            <Order items={selectedDrinks} removeFromSelected={removeFromSelected} />
+            <Order
+                foodItems={[]} // Pass an empty array since there are no selected food items in this context
+                drinkItems={selectedDrinks}
+                removeFromSelectedFood={() => { }} // Pass an empty function since there are no selected food items in this context
+                removeFromSelectedDrinks={removeFromSelected}
+            />
+
         </div>
     );
 };

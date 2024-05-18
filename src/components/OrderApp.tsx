@@ -6,7 +6,6 @@ import Order from './Order';
 const OrderApp: React.FC = () => {
     const [foods, setFoods] = useState<any[]>([]);
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-
     const [drinks, setDrinks] = useState<any[]>([]);
     const [selectedDrinks, setSelectedDrinks] = useState<string[]>([]);
 
@@ -39,6 +38,7 @@ const OrderApp: React.FC = () => {
         const isSelected = selectedCategories.includes(category);
         if (isSelected) {
             setSelectedCategories(selectedCategories.filter(item => item !== category));
+            removeFromSelected(category);
         } else {
             setSelectedCategories([...selectedCategories, category]);
         }
@@ -48,6 +48,7 @@ const OrderApp: React.FC = () => {
         const isSelected = selectedDrinks.includes(drink);
         if (isSelected) {
             setSelectedDrinks(selectedDrinks.filter(item => item !== drink));
+            removeFromSelectedDrinks(drink);
         } else {
             setSelectedDrinks([...selectedDrinks, drink]);
         }
@@ -63,21 +64,27 @@ const OrderApp: React.FC = () => {
 
     return (
         <div className="container mx-auto py-8 flex">
-            <Food
-                foods={foods}
-                selectedCategories={selectedCategories}
-                toggleCategorySelection={toggleCategorySelection}
-                removeFromSelected={removeFromSelected}
+            <div className="flex">
+                <Food
+                    foods={foods}
+                    selectedCategories={selectedCategories}
+                    toggleCategorySelection={toggleCategorySelection}
+                    removeFromSelected={removeFromSelected}
+                />
+                <Drinks
+                    drinks={drinks}
+                    selectedDrinks={selectedDrinks}
+                    toggleDrinkSelection={toggleDrinkSelection}
+                    fetchDrinks={fetchDrinks}
+                    removeFromSelected={removeFromSelectedDrinks}
+                />
+            </div>
+            <Order
+                foodItems={selectedCategories}
+                drinkItems={selectedDrinks}
+                removeFromSelectedFood={removeFromSelected}
+                removeFromSelectedDrinks={removeFromSelectedDrinks}
             />
-            <Drinks
-                drinks={drinks}
-                selectedDrinks={selectedDrinks}
-                toggleDrinkSelection={toggleDrinkSelection}
-                fetchDrinks={fetchDrinks}
-                removeFromSelected={removeFromSelectedDrinks}
-            />
-            <Order items={selectedCategories} removeFromSelected={removeFromSelected} />
-            <Order items={selectedDrinks} removeFromSelected={removeFromSelectedDrinks} />
         </div>
     );
 };
