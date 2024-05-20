@@ -5,7 +5,7 @@ import SlideThree from '@/components/carousel/slideThree';
 import SlideTwo from '@/components/carousel/slideTwo';
 import Founder from '@/components/founder';
 import React from 'react';
-import FindOrder from './FindOrder';
+import FindOrder from '../../components/FindOrder';
 
 export default function HomeScreen() {
     return (

@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import Order from '../Order';
 import Food from './food';
+import Order from '../Order';
+
+interface Category {
+    strCategory: string;
+    strCategoryThumb?: string;
+}
 
 const FoodOrderApp: React.FC = () => {
-    const [foods, setFoods] = useState<any[]>([]);
+    const [foods, setFoods] = useState<Category[]>([]);
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
     useEffect(() => {
         fetchFoods();
+        const storedOrder = localStorage.getItem('foodOrderList');
+        if (storedOrder) {
+            setSelectedCategories(JSON.parse(storedOrder));
+        }
     }, []);
 
     const fetchFoods = async () => {
@@ -21,17 +30,21 @@ const FoodOrderApp: React.FC = () => {
     };
 
     const toggleCategorySelection = (category: string) => {
-        setSelectedCategories(prevCategories =>
-            prevCategories.includes(category)
+        setSelectedCategories(prevCategories => {
+            const updatedCategories = prevCategories.includes(category)
                 ? prevCategories.filter(item => item !== category)
-                : [...prevCategories, category]
-        );
+                : [...prevCategories, category];
+            localStorage.setItem('foodOrderList', JSON.stringify(updatedCategories));
+            return updatedCategories;
+        });
     };
 
     const removeFromSelected = (category: string) => {
-        setSelectedCategories(prevCategories =>
-            prevCategories.filter(item => item !== category)
-        );
+        setSelectedCategories(prevCategories => {
+            const updatedCategories = prevCategories.filter(item => item !== category);
+            localStorage.setItem('foodOrderList', JSON.stringify(updatedCategories));
+            return updatedCategories;
+        });
     };
 
     return (
@@ -53,4 +66,3 @@ const FoodOrderApp: React.FC = () => {
 };
 
 export default FoodOrderApp;
-

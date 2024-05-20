@@ -8,6 +8,10 @@ const DrinkOrderApp: React.FC = () => {
 
     useEffect(() => {
         fetchDrinks();
+        const storedOrder = localStorage.getItem('orderList');
+        if (storedOrder) {
+            setSelectedDrinks(JSON.parse(storedOrder));
+        }
     }, []);
 
     const fetchDrinks = async () => {
@@ -21,17 +25,21 @@ const DrinkOrderApp: React.FC = () => {
     };
 
     const toggleDrinkSelection = (drink: string) => {
-        setSelectedDrinks(prevDrinks =>
-            prevDrinks.includes(drink)
+        setSelectedDrinks(prevDrinks => {
+            const updatedDrinks = prevDrinks.includes(drink)
                 ? prevDrinks.filter(item => item !== drink)
-                : [...prevDrinks, drink]
-        );
+                : [...prevDrinks, drink];
+            localStorage.setItem('orderList', JSON.stringify(updatedDrinks));
+            return updatedDrinks;
+        });
     };
 
     const removeFromSelected = (drink: string) => {
-        setSelectedDrinks(prevDrinks =>
-            prevDrinks.filter(item => item !== drink)
-        );
+        setSelectedDrinks(prevDrinks => {
+            const updatedDrinks = prevDrinks.filter(item => item !== drink);
+            localStorage.setItem('orderList', JSON.stringify(updatedDrinks));
+            return updatedDrinks;
+        });
     };
 
     return (
@@ -44,12 +52,11 @@ const DrinkOrderApp: React.FC = () => {
                 removeFromSelected={removeFromSelected}
             />
             <Order
-                foodItems={[]} // Pass an empty array since there are no selected food items in this context
+                foodItems={[]}
                 drinkItems={selectedDrinks}
-                removeFromSelectedFood={() => { }} // Pass an empty function since there are no selected food items in this context
+                removeFromSelectedFood={() => { }}
                 removeFromSelectedDrinks={removeFromSelected}
             />
-
         </div>
     );
 };
