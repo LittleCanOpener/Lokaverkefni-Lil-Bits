@@ -15,7 +15,7 @@ interface FoodProps {
 const Food: React.FC<FoodProps> = ({ foods, selectedCategories, toggleCategorySelection }) => {
     return (
         <div className="w-3/4">
-            <section className="mb-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">
+            <div className="mb-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">
                 {foods.map((category) => (
                     <div key={category.strCategory} className="m-4">
                         {category.strCategoryThumb && (
@@ -32,7 +32,7 @@ const Food: React.FC<FoodProps> = ({ foods, selectedCategories, toggleCategorySe
                         )}
                     </div>
                 ))}
-            </section>
+            </div>
         </div>
     );
 };

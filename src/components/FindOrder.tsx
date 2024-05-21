@@ -5,7 +5,7 @@ export default function FindOrder() {
     return (
         <>
             <h1>FindOrder</h1>
-            <div className="">
+            <div className="border-solid border-2 border-black">
                 <TEInput
                     className=""
                     type="email"

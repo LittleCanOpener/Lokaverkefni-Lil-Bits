@@ -15,7 +15,7 @@ const Drinks: React.FC<DrinkProps> = ({ drinks, selectedDrinks, toggleDrinkSelec
 
     return (
         <div className="w-3/4">
-            <section className="mb-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">
+            <div className="mb-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">
                 {drinks && drinks.map((drink: any) => (
                     <div key={drink.idDrink} className="mb-8">
                         <div className="grid grid-cols-1">
@@ -38,7 +38,7 @@ const Drinks: React.FC<DrinkProps> = ({ drinks, selectedDrinks, toggleDrinkSelec
                         </div>
                     </div>
                 ))}
-            </section>
+            </div>
         </div>
     );
 };

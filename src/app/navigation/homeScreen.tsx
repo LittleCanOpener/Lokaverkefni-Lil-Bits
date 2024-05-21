@@ -10,7 +10,7 @@ import FindOrder from '../../components/FindOrder';
 export default function HomeScreen() {
     return (
         <>
-            <div className='flex justify-center'>
+            <div className='flex justify-center gap-4'>
                 <div className='grid grid-row-2 grid-flow-row'>
                     <div >
                         <Carousel>
@@ -23,7 +23,7 @@ export default function HomeScreen() {
                         <FindOrder />
                     </div>
                 </div>
-                <div className='grid grid-row-2 grid-flow-row'>
+                <div className='grid grid-row-2 grid-flow-row gap-4'>
                     <div>
                         <BookTable />
                     </div>
