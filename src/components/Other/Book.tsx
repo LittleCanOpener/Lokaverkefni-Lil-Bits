@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Image from 'next/image';
-import tiny from '../app/images/pexels-shvetsa-5217956.jpg';
+import tiny from '../../app/images/pexels-shvetsa-5217956.jpg';
 
 export default function BookTable() {
     return (
@@ -18,5 +18,5 @@ export default function BookTable() {
         </div>
 
         </>
-    )
-}
+    );
+};

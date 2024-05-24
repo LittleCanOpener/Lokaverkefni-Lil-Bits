@@ -1,4 +1,4 @@
-import LogoSVG from '@/app/images/logo/logo';
+import LogoSVG from '../logo/logo';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -35,6 +35,6 @@ const Navbar = () => {
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;

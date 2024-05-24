@@ -1,11 +1,14 @@
-import BookTable from '@/components/book';
+import React from 'react';
 import Carousel from '@/components/carousel/carousel';
 import SlideOne from '@/components/carousel/slideOne';
 import SlideThree from '@/components/carousel/slideThree';
 import SlideTwo from '@/components/carousel/slideTwo';
-import Founder from '@/components/founder';
-import React from 'react';
-import FindOrder from '../../components/FindOrder';
+import FindOrder from '../order/FindOrder';
+import BookTable from '../Other/Book';
+import Founder from '../Other/Founder';
+
+
+
 
 export default function HomeScreen() {
     return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import CEO from '../app/images/lil-bits-CEO.webp';
+import CEO from '../../app/images/lil-bits-CEO.webp';
 
 export default function Founder() {
     return (
@@ -16,4 +16,4 @@ export default function Founder() {
             </div>
         </>
     );
-}
+};
