@@ -1,7 +1,4 @@
-const path = require('path');
-
 module.exports = {
-  // other configurations
   module: {
     rules: [
       {
@@ -15,10 +12,10 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
     ],
   },
-  resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.webp'],
-  },
-  // other configurations
 };

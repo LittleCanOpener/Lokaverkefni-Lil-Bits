@@ -1,49 +1,41 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import BasketContext from '../basket/BasketContext';
-import Drinks from '../beverage/Beverage';
+import React, { useState, useEffect } from 'react';
+import Beverage from '../beverage/Beverage';
 
-export interface Drink {
+interface Drink {
     strDrink: string;
     strDrinkThumb: string;
     idDrink: string;
 }
 
 const DrinkScreen: React.FC = () => {
-    const { addToBasket } = useContext(BasketContext)!;
     const [drinks, setDrinks] = useState<Drink[]>([]);
-    const navigate = useNavigate();
 
     useEffect(() => {
+        const fetchDrinks = async () => {
+            try {
+                const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic');
+                const data = await response.json();
+                setDrinks(data.drinks);
+            } catch (error) {
+                console.error('Error fetching drinks:', error);
+            }
+        };
+
         fetchDrinks();
     }, []);
 
-    const fetchDrinks = async () => {
-        try {
-            const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a'); // Example API endpoint
-            const data = await response.json();
-            setDrinks(data.drinks);
-        } catch (error) {
-            console.error('Error fetching drinks:', error);
-        }
-    };
-
     const toggleDrinkSelection = (drink: string) => {
-        addToBasket({ id: drink, type: 'drink' });
+        console.log(`Selected drink: ${drink}`);
     };
 
     return (
         <div className="container mx-auto py-8">
-            <Drinks drinks={drinks} toggleDrinkSelection={toggleDrinkSelection} />
-            <button
-                className="mt-4 bg-blue-500 text-white p-2 rounded"
-                onClick={() => navigate('/date')}
-            >
-                Continue
-            </button>
+            <Beverage
+                drinks={drinks}
+                toggleDrinkSelection={toggleDrinkSelection}
+            />
         </div>
     );
 };
 
 export default DrinkScreen;
-

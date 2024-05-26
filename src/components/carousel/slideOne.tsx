@@ -1,3 +1,7 @@
+import React from 'react';
+import Image from 'next/image';
+import slideOneFood from '../../app/images/ImageFood.jpg';
+
 const SlideOne = () => (
     <>
         <>
@@ -8,7 +12,7 @@ const SlideOne = () => (
                 A short paragraph with some descriptive text.
             </p>
         </>
-        <img src="https://via.placeholder.com/400/3D1D73/ffffff" />
+        <Image className="max-h-96 w-auto" src={slideOneFood} alt="Image of a burger and fries" />
     </>
 );
 

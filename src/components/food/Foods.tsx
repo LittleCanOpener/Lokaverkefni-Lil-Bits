@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { addSelectedItem } from '../../app/db';
 
 interface Category {
+    idCategory?: string;
     strCategory: string;
     strCategoryThumb?: string;
+    strCategoryDescription?: string;
 }
 
 interface FoodProps {
@@ -12,10 +14,8 @@ interface FoodProps {
 }
 
 const Foods: React.FC<FoodProps> = ({ foods, toggleCategorySelection }) => {
-    // State for storing selected food categories
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
-    // useEffect to restore selected categories from localStorage
     useEffect(() => {
         const storedCategories = localStorage.getItem('selectedFoodCategories');
         if (storedCategories) {
@@ -23,7 +23,6 @@ const Foods: React.FC<FoodProps> = ({ foods, toggleCategorySelection }) => {
         }
     }, []);
 
-    // Function to toggle selection of a category
     const handleCategorySelection = (category: string) => {
         setSelectedCategories(prevCategories => {
             const updatedCategories = prevCategories.includes(category)
@@ -31,6 +30,7 @@ const Foods: React.FC<FoodProps> = ({ foods, toggleCategorySelection }) => {
                 : [...prevCategories, category];
             localStorage.setItem('selectedFoodCategories', JSON.stringify(updatedCategories));
             toggleCategorySelection(category);
+            addSelectedItem({ type: 'food', value: category });
             return updatedCategories;
         });
     };

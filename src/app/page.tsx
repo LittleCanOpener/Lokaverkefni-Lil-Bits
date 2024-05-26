@@ -1,21 +1,22 @@
 'use client';
 
+
+import App from 'next/app';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
 import 'tailwindcss/tailwind.css';
-
-import Navbar from "../components/navbar/Navbar";
+import { BasketProvider } from '../components/basket/BasketContext';
 import Footer from '../components/footer/Footer';
-import { BasketProvider } from '@/components/basket/BasketContext';
-import HomeScreen from '@/components/screens/HomeScreen';
-import DateScreen from '@/components/screens/DateScreen';
-import DrinkScreen from '@/components/screens/DrinkScreen';
-import FoodScreen from '@/components/screens/FoodScreen';
-import OrderScreen from '@/components/screens/OrderScreen';
-import ReceiptScreen from '@/components/screens/ReceiptScreen';
+import Navbar from '../components/navbar/Navbar';
+import DateScreen from '../components/screens/DateScreen';
+import FoodScreen from '../components/screens/FoodScreen';
+import HomeScreen from '../components/screens/HomeScreen';
+import OrderScreen from '../components/screens/OrderScreen';
+import ReceiptScreen from '../components/screens/ReceiptScreen';
+import DrinkScreen from '../components/screens/drinkScreen';
 
-function App() {
+
+const MainApp: React.FC = () => {
   return (
     <Router>
       <BasketProvider>
@@ -34,4 +35,5 @@ function App() {
   );
 };
 
-export default App;
+
+export default MainApp;

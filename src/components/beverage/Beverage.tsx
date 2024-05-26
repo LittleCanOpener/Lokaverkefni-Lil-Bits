@@ -13,10 +13,8 @@ interface DrinkProps {
 }
 
 const Beverage: React.FC<DrinkProps> = ({ drinks, toggleDrinkSelection }) => {
-    // State for storing selected drinks
     const [selectedDrinks, setSelectedDrinks] = useState<string[]>([]);
 
-    // useEffect to restore selected drinks from localStorage
     useEffect(() => {
         const storedDrinks = localStorage.getItem('selectedDrinks');
         if (storedDrinks) {
@@ -24,7 +22,6 @@ const Beverage: React.FC<DrinkProps> = ({ drinks, toggleDrinkSelection }) => {
         }
     }, []);
 
-    // Function to toggle selection of a drink
     const handleDrinkSelection = (drink: string) => {
         setSelectedDrinks(prevDrinks => {
             const updatedDrinks = prevDrinks.includes(drink)
@@ -32,6 +29,7 @@ const Beverage: React.FC<DrinkProps> = ({ drinks, toggleDrinkSelection }) => {
                 : [...prevDrinks, drink];
             localStorage.setItem('selectedDrinks', JSON.stringify(updatedDrinks));
             toggleDrinkSelection(drink);
+            addSelectedItem({ type: 'drink', value: drink });
             return updatedDrinks;
         });
     };
@@ -45,7 +43,6 @@ const Beverage: React.FC<DrinkProps> = ({ drinks, toggleDrinkSelection }) => {
                             <div className="m-4">
                                 <div
                                     className={`relative rounded overflow-hidden cursor-pointer ${selectedDrinks.includes(drink.strDrink) ? 'border-4 border-blue-500' : ''}`}
-
                                     onClick={() => handleDrinkSelection(drink.strDrink)}
                                 >
                                     <img src={drink.strDrinkThumb} alt={drink.strDrink} className="w-full h-full object-cover" />

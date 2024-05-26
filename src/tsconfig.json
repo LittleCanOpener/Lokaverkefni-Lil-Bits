@@ -1,7 +1,7 @@
 {
-    "compilerOptions": {
-      // other options
-      "typeRoots": ["./node_modules/@types", "./path-to-your-declarations"],
-    },
-    "include": ["./src/**/*", "./declarations.d.ts"]
-  }
+  "compilerOptions": {
+    // Other compiler options
+    "typeRoots": ["./node_modules/@types", "./src"]
+  },
+  "include": ["./src/**/*"]
+}
