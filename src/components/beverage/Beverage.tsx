@@ -35,14 +35,14 @@ const Beverage: React.FC<DrinkProps> = ({ drinks, toggleDrinkSelection }) => {
     };
 
     return (
-        <div className="w-3/4">
-            <div className="mb-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">
+        <div className="w-auto">
+            <div className="mb-12 p-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">
                 {drinks.map((drink) => (
                     <div key={drink.idDrink} className="mb-8">
                         <div className="grid grid-cols-1">
                             <div className="m-4">
                                 <div
-                                    className={`relative rounded overflow-hidden cursor-pointer ${selectedDrinks.includes(drink.strDrink) ? 'border-4 border-blue-500' : ''}`}
+                                    className={`relative rounded overflow-hidden cursor-pointer max-w-xs transition duration-300 ease-in-out hover:scale-110  ${selectedDrinks.includes(drink.strDrink) ? 'border-4 border-[#C16757]' : ''}`}
                                     onClick={() => handleDrinkSelection(drink.strDrink)}
                                 >
                                     <img src={drink.strDrinkThumb} alt={drink.strDrink} className="w-full h-full object-cover" />

@@ -18,19 +18,26 @@ const DateScreen: React.FC = () => {
     };
 
     return (
-        <div className="container mx-auto py-8">
-            <Food
-                foods={[]}
-                toggleCategorySelection={() => { }}
-            />
-            <Drinks
-                drinks={[]}
-                toggleDrinkSelection={() => { }}
-            />
-            <DateFetch onDateSelect={handleDateSelection} />
+        <div className="container mx-auto py-8 px-4">
+            <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                <div className="bg-[#e2e299] p-6 rounded-lg shadow-md">
+                    <Food
+                        foods={[]}
+                        toggleCategorySelection={() => { }}
+                    />
+                </div>
+                <div className="bg-[#e2e299] p-6 rounded-lg shadow-md">
+                    <Drinks
+                        drinks={[]}
+                        toggleDrinkSelection={() => { }}
+                    />
+                </div>
+                <div className="bg-[#e2e299] p-6 rounded-lg shadow-md">
+                    <DateFetch onDateSelect={handleDateSelection} />
+                </div>
+            </div>
         </div>
     );
 };
 
 export default DateScreen;
-

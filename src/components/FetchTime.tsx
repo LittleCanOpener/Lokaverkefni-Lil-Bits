@@ -31,6 +31,10 @@ const DateFetch: React.FC<DateFetchProps> = ({ onDateSelect }) => {
                 setHours(setMinutes(new Date(), 30), 17)
             ]}
             dateFormat="MMMM d, yyyy h:mm aa"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50"
+            calendarClassName="rounded-lg shadow-lg"
+            dayClassName={() => "hover:bg-blue-200"}
+            popperClassName="shadow-lg"
         />
     );
 };

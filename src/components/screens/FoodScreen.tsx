@@ -30,7 +30,7 @@ const FoodScreen: React.FC = () => {
     };
 
     return (
-        <div className="container mx-auto py-8">
+        <div className="container mx-auto py-8 bg-[#e2e299] m-7">
             <Foods
                 foods={foods}
                 toggleCategorySelection={toggleCategorySelection}

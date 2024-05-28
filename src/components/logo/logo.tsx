@@ -2,7 +2,7 @@ import React from "react";
 
 const LogoSVG = () => {
     return (
-        <div>
+        <div className="max-w-xs transition duration-300 ease-in-out hover:scale-110">
             <svg
                 style={{ width: "100%", height: "100%" }}
                 viewBox="-1.5 0 1143.3 439.7"

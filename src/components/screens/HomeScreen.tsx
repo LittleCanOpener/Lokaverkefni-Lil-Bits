@@ -9,35 +9,31 @@ import Founder from '../Other/Founder';
 
 
 
-
 export default function HomeScreen() {
     return (
         <>
-            <div className='flex justify-center gap-4'>
-                <div className='grid grid-row-2 grid-flow-row'>
-                    <div className='bg-white rounded-lg shadow-md p-4'>
+            <div className='flex flex-col md:flex-row justify-center gap-4 text-[#C16757] font-serif font-bold'>
+                <div className='grid grid-cols-1 md:grid-rows-2 grid-flow-row'>
+                    <div className='bg-[#e2e299] m-5 shadow-2xl rounded-lg'>
                         <Carousel>
                             <SlideOne />
                             <SlideTwo />
                             <SlideThree />
                         </Carousel>
                     </div>
-                    <div className='md:col-span-2 lg:col-span-1 bg-white rounded-lg shadow-md p-4'>
+                    <div className='p-7'>
                         <FindOrder />
                     </div>
                 </div>
-                <div className='grid grid-row-2 grid-flow-row gap-4'>
+                <div className='p-7'>
                     <div>
                         <BookTable />
                     </div>
-
-                    <div className='bg-white rounded-lg shadow-md p-4'>
+                    <div className='rounded-lg shadow-md '>
                         <Founder />
                     </div>
                 </div>
-
             </div>
-
         </>
-    )
+    );
 }

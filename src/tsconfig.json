@@ -1,7 +1,15 @@
 {
   "compilerOptions": {
-    // Other compiler options
-    "typeRoots": ["./node_modules/@types", "./src"]
+    "target": "es6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
+    "typeRoots": ["./node_modules/@types", "./src"],
+    "outDir": "./dist"
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules"]
 }

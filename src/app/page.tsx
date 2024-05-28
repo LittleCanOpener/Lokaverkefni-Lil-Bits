@@ -13,7 +13,8 @@ import FoodScreen from '../components/screens/FoodScreen';
 import HomeScreen from '../components/screens/HomeScreen';
 import OrderScreen from '../components/screens/OrderScreen';
 import ReceiptScreen from '../components/screens/ReceiptScreen';
-import DrinkScreen from '../components/screens/drinkScreen';
+import DrinkScreen from '../components/screens/DrinkScreen';
+
 
 
 const MainApp: React.FC = () => {
