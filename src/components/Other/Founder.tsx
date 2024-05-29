@@ -6,7 +6,7 @@ export default function Founder() {
     return (
         <>
             <div>
-                <div className='relative w-auto flex flex-col items-center shadow-lg'>
+                <div className='relative w-auto flex flex-col items-center shadow-lg overflow-hidden'>
                     <div className="absolute inset-0 flex flex-col items-center justify-end text-center">
                         <div className="w-full h-24 bg-black bg-opacity-50 flex flex-col items-center justify-center p-2">
                             <h2 className="text-white">Founder & CEO</h2>

@@ -25,24 +25,24 @@ const Carousel: React.FC<IProps> = ({ children }) => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center mt-40 m-4">
-            <div className="overflow-hidden relative" style={{ width: "100%", height: "300px" }}>
-                <div className="flex transition-transform ease-in-out duration-300" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
-                    {children.map((slide, index) => (
-                        <div key={index} className="flex-none w-full flex justify-center items-center" style={{ opacity: currentSlide === index ? 1 : 0 }}>
-                            {slide}
-                        </div>
-                    ))}
-                </div>
+        <div className="relative overflow-hidden text-center">
+            <div className="flex transition-transform ease-in-out duration-300" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+                {children.map((slide, index) => (
+                    <div key={index} className="flex-none flex justify-center items-center w-full" style={{ opacity: currentSlide === index ? 1 : 0 }}>
+                        {slide}
+                    </div>
+                ))}
             </div>
-            <div className="mt-4">
-                <button onClick={() => handleSlideChange(-1)} className="px-4 py-2 bg-[#3E6053] text-white h-16 mr-2 rounded hover:bg-[#C16757] md:border-0"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-                </svg>
+            <div className="bottom-4 left-0 right-0 flex justify-center m-3 p-3">
+                <button onClick={() => handleSlideChange(-1)} className="px-4 py-2 bg-[#3E6053] text-white rounded hover:bg-[#C16757] md:border-0 mr-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                    </svg>
                 </button>
-                <button onClick={() => handleSlideChange(1)} className="px-4 py-2 bg-[#3E6053] text-white h-16 rounded hover:bg-[#C16757] md:border-0"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                </svg>
+                <button onClick={() => handleSlideChange(1)} className="px-4 py-2 bg-[#3E6053] text-white rounded hover:bg-[#C16757] md:border-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                    </svg>
                 </button>
             </div>
         </div>

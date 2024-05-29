@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Foods from '../food/Foods';
+import ScrollToTopButton from '../Other/ToTopBtn';
 
 interface Category {
     idCategory?: string;
@@ -35,6 +36,7 @@ const FoodScreen: React.FC = () => {
                 foods={foods}
                 toggleCategorySelection={toggleCategorySelection}
             />
+            <ScrollToTopButton />
         </div>
     );
 };

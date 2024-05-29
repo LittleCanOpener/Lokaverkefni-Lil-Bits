@@ -26,12 +26,12 @@ export default function FindOrder() {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center bg-[#e2e299] rounded-lg p-8">
+        <div className="flex flex-col items-center justify-center bg-[#e2e299] rounded-lg p-8 overflow-hidden">
             <h1 className="text-2xl">Ordered already?</h1>
             <p>Find your order here.</p>
-            <form onSubmit={handleSubmit} className="w-full flex flex-col items-center">
+            <form onSubmit={handleSubmit} className="w-full flex flex-col items-center mt-4">
                 <input
-                    className={`mb-2 h-12 w-56 px-4 py-2 border ${isValid ? 'border-gray-300' : 'border-red-500'} rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400`}
+                    className={`mb-2 h-12 w-64 md:w-56 px-4 py-2 border ${isValid ? 'border-gray-300' : 'border-red-500'}`}
                     type="email"
                     id="exampleFormControlInputEmail"
                     placeholder="Example@Email.com"
@@ -39,8 +39,13 @@ export default function FindOrder() {
                     onChange={handleChange}
                     required
                 />
-                {!isValid && <p className="mt-2 text-sm text-red-600">Invalid email address</p>}
-                <button type="submit" className="transition duration-300 ease-in-out hover:scale-110 font-bold shadow-md bg-[#3E6053] text-white py-3 px-6 rounded-md hover:bg-[#C16757]">
+                {!isValid && (
+                    <p className="mt-2 text-sm text-red-600">Invalid email address</p>
+                )}
+                <button
+                    type="submit"
+                    className="transition duration-300 ease-in-out hover:scale-110 font-bold shadow-md bg-[#3E6053] text-white py-3 px-6 rounded-md mt-4 hover:bg-[#C16757]"
+                >
                     Find
                 </button>
             </form>

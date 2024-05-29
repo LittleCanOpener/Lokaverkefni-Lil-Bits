@@ -1,7 +1,4 @@
 'use client';
-
-
-import App from 'next/app';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import 'tailwindcss/tailwind.css';

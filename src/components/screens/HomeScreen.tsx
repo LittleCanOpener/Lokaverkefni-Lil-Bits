@@ -11,29 +11,29 @@ import Founder from '../Other/Founder';
 
 export default function HomeScreen() {
     return (
-        <>
-            <div className='flex flex-col md:flex-row justify-center gap-4 text-[#C16757] font-serif font-bold'>
-                <div className='grid grid-cols-1 md:grid-rows-2 grid-flow-row'>
-                    <div className='bg-[#e2e299] m-5 shadow-2xl rounded-lg'>
+        <div className="flex flex-col md:flex-row h-full">
+            <div className="flex flex-col md:flex-row flex-grow">
+                <div className="md:flex md:flex-col">
+                    <div className="bg-[#e2e299] m-2 md:m-5 shadow-2xl rounded-lg">
                         <Carousel>
                             <SlideOne />
                             <SlideTwo />
                             <SlideThree />
                         </Carousel>
                     </div>
-                    <div className='p-7'>
+                    <div className="p-4 md:p-7">
                         <FindOrder />
                     </div>
                 </div>
-                <div className='p-7'>
-                    <div>
+                <div className="p-4 md:p-7 flex-grow">
+                    <div className="mb-2 md:mb-4">
                         <BookTable />
                     </div>
-                    <div className='rounded-lg shadow-md '>
+                    <div className="rounded-lg shadow-md">
                         <Founder />
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
