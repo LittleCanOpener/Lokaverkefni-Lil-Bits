@@ -1,7 +1,6 @@
-import LogoSVG from '../logo/logo';
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import LogoSVG from '../logo/logo';
 
 const Navbar = () => {
   return (
@@ -14,7 +13,6 @@ const Navbar = () => {
           <span className='p-4'>
             <LogoSVG />
           </span>
-
         </Link>
         <div className='flex flex-wrap justify-between content-between'>
           <ul className="font-large text-4xl flex flex-row p-4">

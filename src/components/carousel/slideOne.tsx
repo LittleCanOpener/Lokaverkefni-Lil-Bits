@@ -1,6 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
-import slideOneFood from '../../app/images/ImageFood.jpg';
 
 const SlideOne = () => (
     <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start">
@@ -12,10 +10,9 @@ const SlideOne = () => (
             <q>where every bite brings a taste of happiness and a smile to your face</q>
         </div>
         <div className="sm:mt-4">
-            <Image className="rounded max-h-96 w-full sm:w-auto" src={slideOneFood} alt="Image of a burger and fries" />
+            <img className="rounded max-h-96 w-full sm:w-auto" src="/images/ImageFood.jpg" alt="Image of a burger and fries" />
         </div>
     </div>
 );
-
 
 export default SlideOne;

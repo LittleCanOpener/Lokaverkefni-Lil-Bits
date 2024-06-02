@@ -1,6 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
-import slideTwoFood from '../../app/images/ImageDrink.jpg';
 
 const SlideTwo = () => (
     <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start">
@@ -16,7 +14,7 @@ const SlideTwo = () => (
             </q>
         </div >
         <div className='sm:mt-0'>
-            <Image className="rounded max-h-96 w-auto p-7" src={slideTwoFood} alt="Image of drinks" />
+            <img className="rounded max-h-96 w-auto p-7" src="/images/ImageDrink.jpg" alt="Image of drinks" />
         </div>
     </div >
 );

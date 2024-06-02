@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const isValidEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 };
 
-export default function FindOrder() {
+const FindOrder: React.FC = () => {
     const [email, setEmail] = useState<string>('');
     const [isValid, setIsValid] = useState<boolean>(true);
+    const navigate = useNavigate();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newEmail = e.target.value;
@@ -18,8 +20,7 @@ export default function FindOrder() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (isValid) {
-            console.log('Email is valid:', email);
-            //lookup Emails here When ready to link
+            navigate('/receipt', { state: { email } });
         } else {
             console.log('Email is invalid');
         }
@@ -33,7 +34,6 @@ export default function FindOrder() {
                 <input
                     className={`mb-2 h-12 w-64 md:w-56 px-4 py-2 border ${isValid ? 'border-gray-300' : 'border-red-500'}`}
                     type="email"
-                    id="exampleFormControlInputEmail"
                     placeholder="Example@Email.com"
                     value={email}
                     onChange={handleChange}
@@ -51,5 +51,7 @@ export default function FindOrder() {
             </form>
         </div>
     );
-}
+};
+
+export default FindOrder;
 

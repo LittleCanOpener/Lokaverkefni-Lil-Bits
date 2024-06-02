@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-interface IProps {
+interface CarouselProps {
     children: JSX.Element[];
 }
 
-const Carousel: React.FC<IProps> = ({ children }) => {
+const Carousel: React.FC<CarouselProps> = ({ children }) => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [timer, setTimer] = useState<NodeJS.Timeout>();
 
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentSlide((currentSlide + 1) % children.length);
-        }, 24000); // Timer
+        }, 24000);
 
         setTimer(interval);
 
@@ -50,5 +50,3 @@ const Carousel: React.FC<IProps> = ({ children }) => {
 };
 
 export default Carousel;
-
-

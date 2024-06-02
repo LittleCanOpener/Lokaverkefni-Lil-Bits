@@ -11,7 +11,8 @@ import HomeScreen from '../components/screens/HomeScreen';
 import OrderScreen from '../components/screens/OrderScreen';
 import ReceiptScreen from '../components/screens/ReceiptScreen';
 import DrinkScreen from '../components/screens/DrinkScreen';
-
+import OrderConfirmationScreen from '../components/order/ConfirmOrder';
+import OrderSummaryScreen from '../components/screens/SummaryScreen';
 
 
 const MainApp: React.FC = () => {
@@ -26,12 +27,13 @@ const MainApp: React.FC = () => {
           <Route path="/order" element={<OrderScreen />} />
           <Route path="/date" element={<DateScreen />} />
           <Route path="/receipt" element={<ReceiptScreen />} />
+          <Route path="/order-confirmation" element={<OrderConfirmationScreen />} />
+          <Route path="/order-summary" element={<OrderSummaryScreen />} />
         </Routes>
         <Footer />
       </BasketProvider>
     </Router>
   );
 };
-
 
 export default MainApp;

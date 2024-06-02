@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect, ReactNode } from 'react';
 
 export interface BasketItem {
     id: string;
+    name: string;
     type: 'food' | 'drink';
 }
 
@@ -9,9 +10,9 @@ export interface BasketContextValue {
     basket: BasketItem[];
     addToBasket: (item: BasketItem) => void;
     removeFromBasket: (id: string) => void;
+    clearBasket: () => void;
 }
 
-// Create the context
 export const BasketContext = createContext<BasketContextValue | null>(null);
 
 export const BasketProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -36,11 +37,15 @@ export const BasketProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         setBasket(prevBasket => prevBasket.filter(item => item.id !== id));
     };
 
-    // Create the context value
+    const clearBasket = () => {
+        setBasket([]);
+    };
+
     const contextValue: BasketContextValue = {
         basket,
         addToBasket,
         removeFromBasket,
+        clearBasket,
     };
 
     return (
@@ -49,5 +54,3 @@ export const BasketProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         </BasketContext.Provider>
     );
 };
-
-export default BasketContext;

@@ -3,20 +3,20 @@ import { useNavigate } from 'react-router-dom';
 import BasketContext, { BasketItem } from '../basket/BasketContext';
 
 interface OrderProps {
-    foodItems: string[];
-    drinkItems: string[];
-    removeFromSelectedFood: (item: string) => void;
+    foodItems: BasketItem[];
+    drinkItems: BasketItem[];
+    removeFromSelectedFoodCategories: (item: string) => void;
     removeFromSelectedDrinks: (item: string) => void;
 }
 
 const pages = ['/food', '/drink', '/date'];
 
-const Order: React.FC<OrderProps> = ({ foodItems, drinkItems, removeFromSelectedFood, removeFromSelectedDrinks }) => {
+const Order: React.FC<OrderProps> = ({ foodItems, drinkItems, removeFromSelectedFoodCategories, removeFromSelectedDrinks }) => {
     const navigate = useNavigate();
     const basketContext = useContext(BasketContext);
     const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
-    const basket = basketContext?.basket ?? []; // Use nullish coalescing operator to handle null context value
+    const basket = basketContext?.basket ?? [];
 
     const handleContinue = () => {
         if (currentPageIndex < pages.length - 1) {
@@ -26,7 +26,7 @@ const Order: React.FC<OrderProps> = ({ foodItems, drinkItems, removeFromSelected
     };
 
     const handleRemoveFromBasket = (id: string) => {
-        basketContext?.removeFromBasket(id); // Use optional chaining to safely call removeFromBasket
+        basketContext?.removeFromBasket(id);
     };
 
     return (
@@ -35,7 +35,7 @@ const Order: React.FC<OrderProps> = ({ foodItems, drinkItems, removeFromSelected
             <ul className="list-disc list-inside">
                 {basket.map((item: BasketItem, index: number) => (
                     <li key={index} className="mb-2">
-                        {item.id} {/* Adjust this to display relevant information */}
+                        {item.name} {/* Display item name */}
                         <button
                             className="ml-2 px-3 py-1 bg-red-500 text-white rounded-md"
                             onClick={() => handleRemoveFromBasket(item.id)}
@@ -46,10 +46,10 @@ const Order: React.FC<OrderProps> = ({ foodItems, drinkItems, removeFromSelected
                 ))}
                 {foodItems.map((item, index) => (
                     <li key={index} className="mb-2">
-                        {item}
+                        {item.name} {/* Display item name */}
                         <button
                             className="ml-2 px-3 py-1 bg-red-500 text-white rounded-md"
-                            onClick={() => removeFromSelectedFood(item)}
+                            onClick={() => removeFromSelectedFoodCategories(item.id)}
                         >
                             Remove
                         </button>
@@ -57,10 +57,10 @@ const Order: React.FC<OrderProps> = ({ foodItems, drinkItems, removeFromSelected
                 ))}
                 {drinkItems.map((item, index) => (
                     <li key={index} className="mb-2">
-                        {item}
+                        {item.name} {/* Display item name */}
                         <button
                             className="ml-2 px-3 py-1 bg-red-500 text-white rounded-md"
-                            onClick={() => removeFromSelectedDrinks(item)}
+                            onClick={() => removeFromSelectedDrinks(item.id)}
                         >
                             Remove
                         </button>
@@ -78,5 +78,6 @@ const Order: React.FC<OrderProps> = ({ foodItems, drinkItems, removeFromSelected
 };
 
 export default Order;
+
 
 

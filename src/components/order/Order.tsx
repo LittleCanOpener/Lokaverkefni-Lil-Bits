@@ -3,11 +3,11 @@ import React from 'react';
 interface OrderProps {
     foodItems: any[];
     drinkItems: any[];
-    removeFromSelectedFood: (id: string) => void;
+    removeFromSelectedFoodCategories: (id: string) => void;
     removeFromSelectedDrinks: (id: string) => void;
 }
 
-const Order: React.FC<OrderProps> = ({ foodItems, drinkItems, removeFromSelectedFood, removeFromSelectedDrinks }) => {
+const Order: React.FC<OrderProps> = ({ foodItems, drinkItems, removeFromSelectedFoodCategories, removeFromSelectedDrinks }) => {
     return (
         <div className="w-full">
             <h1>Order Summary</h1>
@@ -16,7 +16,7 @@ const Order: React.FC<OrderProps> = ({ foodItems, drinkItems, removeFromSelected
                 {foodItems.map((foodItem) => (
                     <li key={foodItem.id}>
                         {foodItem.id}
-                        <button onClick={() => removeFromSelectedFood(foodItem.id)}>Remove</button>
+                        <button onClick={() => removeFromSelectedFoodCategories(foodItem.id)}>Remove</button>
                     </li>
                 ))}
             </ul>
