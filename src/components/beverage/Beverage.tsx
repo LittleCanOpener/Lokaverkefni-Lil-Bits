@@ -21,7 +21,7 @@ const Beverage: React.FC<DrinkProps> = ({ drinks, toggleDrinkSelection }) => {
                         <div className="grid grid-cols-1">
                             <div className="m-4">
                                 <div
-                                    className={`relative rounded overflow-hidden cursor-pointer max-w-xs transition duration-300 ease-in-out hover:scale-110  ${getSelectedItems().find(item => item.id === drink.idDrink) ? 'border-4 border-[#C16757]' : ''}`}
+                                    className={`relative rounded overflow-hidden cursor-pointer max-w-xs transition duration-200 ease-in-out hover:scale-110  ${getSelectedItems().find(item => item.id === drink.idDrink) ? 'border-4 border-[#C16757]' : ''}`}
                                     onClick={() => toggleDrinkSelection(drink)}
                                 >
                                     <img src={drink.strDrinkThumb} alt={drink.strDrink} className="w-full h-full object-cover" />

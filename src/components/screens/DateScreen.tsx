@@ -13,10 +13,8 @@ const DateScreen: React.FC = () => {
     };
 
     return (
-        <div className="container mx-auto py-8 px-4">
-            <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                <DateFetch onDateSelect={handleDateSelection} />
-            </div>
+        <div className="container mx-auto py-8 flex justify-center items-center">
+            <DateFetch onDateSelect={handleDateSelection} />
         </div>
     );
 };

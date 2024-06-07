@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import BasketContext, { BasketItem } from '../basket/BasketContext';
+import { BasketContext, BasketItem } from '../basket/BasketContext';
+
 
 interface OrderProps {
     foodItems: BasketItem[];
@@ -68,7 +69,7 @@ const Order: React.FC<OrderProps> = ({ foodItems, drinkItems, removeFromSelected
                 ))}
             </ul>
             <button
-                className="m-3 p-3 bg-blue-500 text-white rounded-lg font-semibold"
+                className="px-4 py-2 bg-[#3E6053] text-white hover:bg-[#C16757] md:border-0 mr-2 rounded-lg font-semibold"
                 onClick={handleContinue}
             >
                 Continue
@@ -78,6 +79,3 @@ const Order: React.FC<OrderProps> = ({ foodItems, drinkItems, removeFromSelected
 };
 
 export default Order;
-
-
-

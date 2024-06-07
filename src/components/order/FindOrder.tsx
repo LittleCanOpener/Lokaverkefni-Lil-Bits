@@ -44,7 +44,7 @@ const FindOrder: React.FC = () => {
                 )}
                 <button
                     type="submit"
-                    className="transition duration-300 ease-in-out hover:scale-110 font-bold shadow-md bg-[#3E6053] text-white py-3 px-6 rounded-md mt-4 hover:bg-[#C16757]"
+                    className="transition duration-200 ease-in-out hover:scale-110 font-bold shadow-md bg-[#3E6053] text-white py-3 px-6 rounded-md mt-4 hover:bg-[#C16757]"
                 >
                     Find
                 </button>

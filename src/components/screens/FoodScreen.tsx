@@ -54,7 +54,7 @@ const FoodScreen: React.FC = () => {
     return (
         <div className="container mx-auto py-8 bg-[#e2e299] m-7">
             <Foods foods={foods} toggleCategorySelection={toggleCategorySelection} selectedCategories={selectedCategories} />
-            <button onClick={handleNext} className="mt-4 px-4 py-2 bg-blue-500 text-white">Next</button>
+            <button onClick={handleNext} className="px-4 py-2 bg-[#3E6053] text-white rounded hover:bg-[#C16757] md:border-0 mr-2 transition duration-200">Next</button>
             <ScrollToTopButton />
         </div>
     );

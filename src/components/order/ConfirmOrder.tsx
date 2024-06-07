@@ -38,9 +38,9 @@ const OrderConfirmationScreen: React.FC = () => {
     };
 
     return (
-        <div className="container mx-auto py-8">
-            <h1>Order Confirmation</h1>
-            <p>Enter your email to receive the order confirmation:</p>
+        <div className="container mx-auto py-8 my-10 flex flex-col justify-center items-center h-full p-4 bg-[#e2e299]">
+            <h1 className="text-2xl font-bold text-[#3E6053] mb-4">Order Confirmation</h1>
+            <p className="text-[#3E6053] mb-4">Enter your email to receive the order confirmation:</p>
             <input
                 type="email"
                 placeholder="Enter your email"
@@ -49,9 +49,15 @@ const OrderConfirmationScreen: React.FC = () => {
                     setEmail(e.target.value);
                     setIsEmailValid(true);
                 }}
+                className="w-full max-w-xs px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:border-[#C16757] focus:ring focus:ring-[#C16757] focus:ring-opacity-50 mb-4"
             />
-            {!isEmailValid && <p className="text-red-500">Please enter a valid email address.</p>}
-            <button onClick={handleEmailSubmit}>Submit</button>
+            {!isEmailValid && <p className="text-red-500 mb-4">Please enter a valid email address.</p>}
+            <button
+                onClick={handleEmailSubmit}
+                className="px-6 py-2 bg-[#3E6053] text-white rounded-md shadow-md hover:bg-[#C16757] transition duration-200"
+            >
+                Submit
+            </button>
         </div>
     );
 };

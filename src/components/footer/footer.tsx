@@ -4,7 +4,7 @@ import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg
 
 const Footer = () => {
     return (
-        <footer className="bg-[#3E6053] w-full py-6">
+        <footer className="bg-[#3E6053] w-full py-6 mt-auto">
             <div className="container mx-auto text-[#e2e299] text-center">
                 <ol className="flex justify-around space-x-6 text-4xl">
                     <li className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none">
@@ -30,3 +30,4 @@ const Footer = () => {
 }
 
 export default Footer;
+

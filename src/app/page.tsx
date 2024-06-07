@@ -18,20 +18,22 @@ import OrderSummaryScreen from '../components/screens/SummaryScreen';
 const MainApp: React.FC = () => {
   return (
     <Router>
-      <BasketProvider>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<HomeScreen />} />
-          <Route path="/food" element={<FoodScreen />} />
-          <Route path="/drink" element={<DrinkScreen />} />
-          <Route path="/order" element={<OrderScreen />} />
-          <Route path="/date" element={<DateScreen />} />
-          <Route path="/receipt" element={<ReceiptScreen />} />
-          <Route path="/order-confirmation" element={<OrderConfirmationScreen />} />
-          <Route path="/order-summary" element={<OrderSummaryScreen />} />
-        </Routes>
+      <div className="flex flex-col min-h-screen">
+        <BasketProvider>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<HomeScreen />} />
+            <Route path="/food" element={<FoodScreen />} />
+            <Route path="/drink" element={<DrinkScreen />} />
+            <Route path="/order" element={<OrderScreen />} />
+            <Route path="/date" element={<DateScreen />} />
+            <Route path="/receipt" element={<ReceiptScreen />} />
+            <Route path="/order-confirmation" element={<OrderConfirmationScreen />} />
+            <Route path="/order-summary" element={<OrderSummaryScreen />} />
+          </Routes>
+        </BasketProvider>
         <Footer />
-      </BasketProvider>
+      </div>
     </Router>
   );
 };
