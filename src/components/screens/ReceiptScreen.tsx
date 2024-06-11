@@ -9,6 +9,7 @@ const ReceiptScreen: React.FC = () => {
     const location = useLocation();
     const { email } = location.state || {};
     const order = getOrderFromStorage(email);
+    const attendees = localStorage.getItem('attendees') ? parseInt(localStorage.getItem('attendees') || '0') : 0;
 
     useEffect(() => {
         if (!order.items.length) {
@@ -19,9 +20,14 @@ const ReceiptScreen: React.FC = () => {
     const calculateTotal = () => {
         const foodPrice = 10; // dummy example price per food item
         const drinkPrice = 5; // dummy example price per drink item
-        const foodCount = order.items.filter(item => item.type === 'food').length;
-        const drinkCount = order.items.filter(item => item.type === 'drink').length;
-        return (foodCount * foodPrice) + (drinkCount * drinkPrice);
+        let total = 0;
+
+        order.items.forEach(item => {
+            const itemPrice = item.type === 'food' ? foodPrice : drinkPrice;
+            total += item.quantity * itemPrice;
+        });
+
+        return total;
     };
 
     const getItemPrice = (type: string) => (type === 'food' ? 10 : 5);
@@ -37,14 +43,15 @@ const ReceiptScreen: React.FC = () => {
         doc.text(`Email: ${email}`, 10, 20);
         doc.text(`Arrival Time: ${new Date(order.orderTime).toLocaleString()}`, 10, 30);
 
-        const tableColumn = ["Item Name", "Type", "Price"];
+        const tableColumn = ["Item Name", "Type", "Quantity", "Price"];
         const tableRows: any[] = [];
 
         order.items.forEach((item) => {
             const itemData = [
                 item.name,
                 item.type === 'food' ? 'Food' : 'Beverage',
-                `$${getItemPrice(item.type)}`
+                item.quantity,
+                `$${getItemPrice(item.type) * item.quantity}`
             ];
             tableRows.push(itemData);
         });
@@ -70,6 +77,7 @@ const ReceiptScreen: React.FC = () => {
                     <tr>
                         <th className="py-2 px-4 border-b-2 border-gray-800">Item Name</th>
                         <th className="py-2 px-4 border-b-2 border-gray-800">Type</th>
+                        <th className="py-2 px-4 border-b-2 border-gray-800">Quantity</th>
                         <th className="py-2 px-4 border-b-2 border-gray-800">Price</th>
                     </tr>
                 </thead>
@@ -86,8 +94,9 @@ const ReceiptScreen: React.FC = () => {
                             <td className="py-2 px-4 border-b border-gray-300 text-center">
                                 {item.type === 'food' ? <strong>Food</strong> : <strong>Beverage</strong>}
                             </td>
+                            <td className="py-2 px-4 border-b border-gray-300 text-center">{item.quantity}</td>
                             <td className="py-2 px-4 border-b border-gray-300 text-center">
-                                ${getItemPrice(item.type)}
+                                ${getItemPrice(item.type) * item.quantity}
                             </td>
                         </tr>
                     ))}
@@ -113,3 +122,4 @@ const ReceiptScreen: React.FC = () => {
 };
 
 export default ReceiptScreen;
+

@@ -4,6 +4,7 @@ export interface BasketItem {
     id: string;
     name: string;
     type: 'food' | 'drink';
+    quantity: number;
 }
 
 export interface BasketContextValue {

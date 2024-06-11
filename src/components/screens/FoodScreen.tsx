@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Foods from '../food/Foods';
 import ScrollToTopButton from '../Other/ToTopBtn';
-import { addSelectedItem, getSelectedItems } from '../../utils/storage';
+import { addSelectedItem, getSelectedItems, updateSelectedItemQuantity } from '../../utils/storage';
 
 interface Category {
     idCategory?: string;
@@ -30,20 +30,23 @@ const FoodScreen: React.FC = () => {
         fetchFoods();
     }, []);
 
-    const toggleCategorySelection = (category: string) => {
+    const toggleCategorySelection = (category: string, quantity: number) => {
         setSelectedCategories(prevCategories => {
             const updatedCategories = prevCategories.includes(category)
                 ? prevCategories.filter(item => item !== category)
                 : [...prevCategories, category];
 
-            // Add or remove selected item from local storage
             const categoryItem = foods.find(item => item.strCategory === category);
             if (categoryItem) {
-                addSelectedItem({ id: categoryItem.strCategory, name: categoryItem.strCategory, type: 'food' });
+                addSelectedItem({ id: categoryItem.strCategory, name: categoryItem.strCategory, type: 'food', quantity });
             }
 
             return updatedCategories;
         });
+    };
+
+    const handleQuantityChange = (category: string, quantity: number) => {
+        updateSelectedItemQuantity(category, quantity);
     };
 
     const handleNext = () => {
@@ -53,7 +56,7 @@ const FoodScreen: React.FC = () => {
 
     return (
         <div className="container mx-auto py-8 bg-[#e2e299] m-7">
-            <Foods foods={foods} toggleCategorySelection={toggleCategorySelection} selectedCategories={selectedCategories} />
+            <Foods foods={foods} toggleCategorySelection={toggleCategorySelection} selectedCategories={selectedCategories} handleQuantityChange={handleQuantityChange} />
             <button onClick={handleNext} className="px-4 py-2 bg-[#3E6053] text-white rounded hover:bg-[#C16757] md:border-0 mr-2 transition duration-200">Next</button>
             <ScrollToTopButton />
         </div>

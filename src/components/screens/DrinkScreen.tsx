@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Beverage from '../beverage/Beverage';
 import { useNavigate } from 'react-router-dom';
 import ScrollToTopButton from '../Other/ToTopBtn';
-import { addSelectedItem, removeSelectedItem, getSelectedItems } from '../../utils/storage';
+import { addSelectedItem, removeSelectedItem, getSelectedItems, updateSelectedItemQuantity } from '../../utils/storage';
 
 interface Drink {
     strDrink: string;
@@ -34,17 +34,21 @@ const DrinkScreen: React.FC = () => {
         setSelectedDrinks(storedDrinks);
     }, []);
 
-    const toggleDrinkSelection = (drink: Drink) => {
+    const toggleDrinkSelection = (drink: Drink, quantity: number) => {
         setSelectedDrinks(prevSelectedDrinks => {
             const isSelected = prevSelectedDrinks.includes(drink.idDrink);
             if (isSelected) {
                 removeSelectedItem(drink.idDrink);
                 return prevSelectedDrinks.filter(item => item !== drink.idDrink);
             } else {
-                addSelectedItem({ id: drink.idDrink, name: drink.strDrink, type: 'drink' });
+                addSelectedItem({ id: drink.idDrink, name: drink.strDrink, type: 'drink', quantity });
                 return [...prevSelectedDrinks, drink.idDrink];
             }
         });
+    };
+
+    const handleQuantityChange = (drinkId: string, quantity: number) => {
+        updateSelectedItemQuantity(drinkId, quantity);
     };
 
     const handleNext = () => {
@@ -54,7 +58,7 @@ const DrinkScreen: React.FC = () => {
 
     return (
         <div className="container mx-auto py-8 bg-[#e2e299] m-7">
-            <Beverage drinks={drinks} toggleDrinkSelection={toggleDrinkSelection} />
+            <Beverage drinks={drinks} toggleDrinkSelection={toggleDrinkSelection} handleQuantityChange={handleQuantityChange} />
             <button onClick={handleNext} className="px-4 py-2 bg-[#3E6053] text-white rounded hover:bg-[#C16757] md:border-0 mr-2 transition duration-200">Next</button>
             <ScrollToTopButton />
         </div>

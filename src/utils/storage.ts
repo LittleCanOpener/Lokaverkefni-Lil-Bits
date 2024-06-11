@@ -1,6 +1,5 @@
 import { BasketItem } from "../components/basket/BasketContext";
 
-
 // Function to get all selected items (drinks and food)
 export const getSelectedItems = (): BasketItem[] => {
     return JSON.parse(localStorage.getItem('selectedItems') || '[]');
@@ -9,13 +8,14 @@ export const getSelectedItems = (): BasketItem[] => {
 // Function to add a selected item to local storage (acts as a DB in this example)
 export const addSelectedItem = (item: BasketItem): void => {
     let selectedItems: BasketItem[] = getSelectedItems();
-    if (!selectedItems.find((selectedItem) => selectedItem.id === item.id)) {
-        selectedItems.push(item);
-        localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
-        console.log('Selected item added to local storage:', item);
+    const existingItem = selectedItems.find((selectedItem) => selectedItem.id === item.id);
+    if (existingItem) {
+        existingItem.quantity = item.quantity;
     } else {
-        console.log(`Item with id ${item.id} is already in the list`);
+        selectedItems.push(item);
     }
+    localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+    console.log('Selected item added to local storage:', item);
 };
 
 // Function to remove a selected item from local storage
@@ -51,3 +51,13 @@ export const getOrderFromStorage = (email: string): Order => {
     return orders[email] || { items: [], orderTime: '', arrivalDate: '' };
 };
 
+// Function to update the quantity of a selected item in local storage
+export const updateSelectedItemQuantity = (id: string, quantity: number): void => {
+    let selectedItems: BasketItem[] = getSelectedItems();
+    const item = selectedItems.find((selectedItem) => selectedItem.id === id);
+    if (item) {
+        item.quantity = quantity;
+        localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+        console.log(`Updated quantity for item with id ${id} to ${quantity}`);
+    }
+};
