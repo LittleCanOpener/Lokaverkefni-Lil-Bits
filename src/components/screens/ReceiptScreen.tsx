@@ -42,6 +42,7 @@ const ReceiptScreen: React.FC = () => {
         doc.text('Receipt', 10, 10);
         doc.text(`Email: ${email}`, 10, 20);
         doc.text(`Arrival Time: ${new Date(order.orderTime).toLocaleString()}`, 10, 30);
+        doc.text(`Number of Attendees: ${attendees}`, 10, 40);
 
         const tableColumn = ["Item Name", "Type", "Quantity", "Price"];
         const tableRows: any[] = [];
@@ -59,7 +60,7 @@ const ReceiptScreen: React.FC = () => {
         (doc as any).autoTable({
             head: [tableColumn],
             body: tableRows,
-            startY: 40,
+            startY: 50,
         });
 
         doc.text(`Total Price: $${calculateTotal()}`, 10, (doc as any).lastAutoTable.finalY + 10);
@@ -71,7 +72,8 @@ const ReceiptScreen: React.FC = () => {
         <div className="container mx-auto py-8 bg-[#e2e299] p-6 mt-7 shadow-lg rounded-lg">
             <h1 className="text-2xl font-bold mb-4">Receipt</h1>
             <p className="mb-2"><strong>Email:</strong> {email}</p>
-            <p className="mb-4"><strong>Arrival Time:</strong> {new Date(order.orderTime).toLocaleString()}</p>
+            <p className="mb-2"><strong>Arrival Time:</strong> {new Date(order.orderTime).toLocaleString()}</p>
+            <p className="mb-4"><strong>Table For:</strong> {attendees}</p>
             <table className="min-w-full bg-white shadow-md">
                 <thead className="bg-[#C16757] text-white">
                     <tr>
@@ -122,4 +124,3 @@ const ReceiptScreen: React.FC = () => {
 };
 
 export default ReceiptScreen;
-
