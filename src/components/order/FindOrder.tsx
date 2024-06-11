@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getOrderFromStorage } from '../../utils/storage';
 
 const isValidEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -20,7 +21,12 @@ const FindOrder: React.FC = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (isValid) {
-            navigate('/receipt', { state: { email } });
+            const order = getOrderFromStorage(email);
+            if (order && order.items.length > 0) {
+                navigate('/receipt', { state: { email } });
+            } else {
+                alert('Order not found for the provided email.');
+            }
         } else {
             console.log('Email is invalid');
         }

@@ -38,7 +38,7 @@ const Beverage: React.FC<DrinkProps> = ({ drinks, toggleDrinkSelection, handleQu
                                         type="number"
                                         defaultValue={1}
                                         onChange={(e) => handleQuantityChange(drink.idDrink, parseInt(e.target.value))}
-                                        className="w-20 p-2 border rounded-lg"
+                                        className="w-20 p-2 border rounded-lg border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#C16757]"
                                         min="1"
                                     />
                                 </div>

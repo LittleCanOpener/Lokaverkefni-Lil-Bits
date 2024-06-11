@@ -57,13 +57,16 @@ const DrinkScreen: React.FC = () => {
     };
 
     return (
-        <div className="container mx-auto py-8 bg-[#e2e299] m-7">
+        <div className="container mx-auto py-8 bg-[#e2e299] m-7 flex flex-col items-center">
             <Beverage drinks={drinks} toggleDrinkSelection={toggleDrinkSelection} handleQuantityChange={handleQuantityChange} />
-            <button onClick={handleNext} className="px-4 py-2 bg-[#3E6053] text-white rounded hover:bg-[#C16757] md:border-0 mr-2 transition duration-200">Next</button>
+            <button onClick={handleNext} className="px-6 py-4 bg-[#3E6053] text-white rounded hover:bg-[#C16757] transition duration-200 mt-4">
+                Next
+            </button>
             <ScrollToTopButton />
         </div>
     );
 };
 
 export default DrinkScreen;
+
 
