@@ -1,11 +1,11 @@
 import React from 'react';
-import Carousel from '../carousel/Carousel';
-import SlideOne from '../carousel/SlideOne';
-import SlideTwo from '../carousel/SlideTwo';
-import SlideThree from '../carousel/SlideThree';
 import FindOrder from '../order/FindOrder';
-import BookTable from '../other/Book';
-import Founder from '../other/Founder';
+import BookTable from '../Other/Book';
+import Founder from '../Other/Founder';
+import Carousel from '../carousel/carousel';
+import SlideOne from '../carousel/slideOne';
+import SlideThree from '../carousel/slideThree';
+import SlideTwo from '../carousel/slideTwo';
 
 const HomeScreen: React.FC = () => {
     return (
