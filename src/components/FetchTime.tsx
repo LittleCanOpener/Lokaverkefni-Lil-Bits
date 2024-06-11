@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { setHours, setMinutes } from "date-fns";
+import { setHours, setMinutes, addDays, isBefore, isAfter } from "date-fns";
 
 interface DateFetchProps {
     onDateSelect: (date: Date) => void;
 }
 
 const DateFetch: React.FC<DateFetchProps> = ({ onDateSelect }) => {
-    const [selectedDate, setSelectedDate] = useState<Date | null>(
-        setHours(setMinutes(new Date(), 30), 16)
-    );
+    const now = new Date();
+    const initialDate = isBefore(now, setHours(setMinutes(now, 0), 16)) ? setHours(setMinutes(now, 0), 16) : setHours(setMinutes(addDays(now, 1), 0), 16);
+
+    const [selectedDate, setSelectedDate] = useState<Date | null>(initialDate);
 
     const handleDateChange = (date: Date | null) => {
         if (date) {
@@ -26,7 +27,7 @@ const DateFetch: React.FC<DateFetchProps> = ({ onDateSelect }) => {
 
     const filterTime = (time: Date) => {
         const selectedHour = time.getHours();
-        return selectedHour >= 10 && selectedHour < 22;
+        return selectedHour >= 16 && selectedHour < 23;
     };
 
     return (
