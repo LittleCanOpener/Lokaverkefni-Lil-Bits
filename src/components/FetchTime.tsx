@@ -24,9 +24,14 @@ const DateFetch: React.FC<DateFetchProps> = ({ onDateSelect }) => {
         }
     };
 
+    const filterTime = (time: Date) => {
+        const selectedHour = time.getHours();
+        return selectedHour >= 10 && selectedHour < 22;
+    };
+
     return (
-        <div className="flex flex-col justify-center items-center h-full p-4 bg-[#e2e299] rounded-lg shadow-lg">
-            <label htmlFor="arrival-date" className="mb-2 text-lg font-semibold text-[#3E6053]">
+        <div className="flex flex-col justify-center items-center h-full p-6 bg-[#e2e299] rounded-lg shadow-lg">
+            <label htmlFor="arrival-date" className="mb-4 text-2xl font-semibold text-[#3E6053]">
                 Select your arrival date and time:
             </label>
             <DatePicker
@@ -37,21 +42,17 @@ const DateFetch: React.FC<DateFetchProps> = ({ onDateSelect }) => {
                 timeFormat="HH:mm"
                 timeIntervals={30}
                 timeCaption="Time"
-                excludeTimes={[
-                    setHours(setMinutes(new Date(), 0), 17),
-                    setHours(setMinutes(new Date(), 30), 18),
-                    setHours(setMinutes(new Date(), 30), 19),
-                    setHours(setMinutes(new Date(), 30), 17)
-                ]}
+                filterTime={filterTime}
+                minDate={new Date()}
                 dateFormat="MMMM d, yyyy h:mm aa"
-                className="w-full max-w-xs px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:border-[#C16757] focus:ring focus:ring-[#C16757] focus:ring-opacity-50"
+                className="w-full max-w-sm px-6 py-4 text-lg border border-gray-300 rounded-lg shadow-sm focus:border-[#C16757] focus:ring focus:ring-[#C16757] focus:ring-opacity-50"
                 calendarClassName="rounded-lg shadow-lg"
-                dayClassName={() => "hover:bg-blue-200"}
+                dayClassName={() => "hover:bg-[#C16757] text-lg"}
                 popperClassName="shadow-lg"
             />
             <button
                 onClick={handleContinue}
-                className="mt-4 px-4 py-2 bg-[#3E6053] text-white rounded-md shadow-md hover:bg-[#C16757] transition duration-200"
+                className="mt-6 px-6 py-3 bg-[#3E6053] text-white rounded-lg shadow-md hover:bg-[#C16757] transition duration-200 text-lg"
             >
                 Continue
             </button>
@@ -60,4 +61,3 @@ const DateFetch: React.FC<DateFetchProps> = ({ onDateSelect }) => {
 };
 
 export default DateFetch;
-
